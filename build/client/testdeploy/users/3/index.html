@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>User 3</title><meta name="description" content="Profile page for user 3"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="modulepreload" href="/testdeploy/assets/entry.client-BzPPrKz8.js"/><link rel="modulepreload" href="/testdeploy/assets/chunk-OIYGIGL5-B0h15kU2.js"/><link rel="modulepreload" href="/testdeploy/assets/root-CArOmm6T.js"/><link rel="modulepreload" href="/testdeploy/assets/layout-DekglgXJ.js"/><link rel="modulepreload" href="/testdeploy/assets/users-oCCgZ984.js"/><link rel="modulepreload" href="/testdeploy/assets/user-DugsJtRO.js"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&amp;display=swap"/><link rel="stylesheet" href="/testdeploy/assets/index-udZwS3RA.css"/></head><body><div id="root"><h1>React Router 7 • React 19 • Framework Mode</h1><nav style="border-bottom:solid 1px #ccc;padding-bottom:1rem;margin-bottom:1rem"><a class="" style="font-weight:normal;margin-right:1rem" href="/testdeploy/" data-discover="true">Home</a><a aria-current="page" class="active" style="font-weight:bold;margin-right:1rem" href="/testdeploy/users" data-discover="true">Users</a></nav><main style="padding:1rem 0"><h2>Users</h2><ul style="margin-bottom:1rem"><li><a href="/testdeploy/users/1" data-discover="true">Robin Wieruch</a></li><li><a href="/testdeploy/users/2" data-discover="true">Sarah Finnley</a></li><li><a href="/testdeploy/users/3" data-discover="true">Ada Lovelace</a></li></ul><h3>User: <!-- -->3</h3><div style="display:flex;gap:0.75rem;margin-bottom:0.75rem"><a href="/testdeploy/users" data-discover="true">Back to Users</a></div><p>This nested route is mounted under /users and matches /users/<!-- -->3<!-- -->.</p><p><strong>Framework mode:</strong> Enhanced with meta tags! ✨</p></main></div><script>((storageKey2, restoreKey) => {
+    if (!window.history.state || !window.history.state.key) {
+      let key = Math.random().toString(32).slice(2);
+      window.history.replaceState({ key }, "");
+    }
+    try {
+      let positions = JSON.parse(sessionStorage.getItem(storageKey2) || "{}");
+      let storedY = positions[restoreKey || window.history.state.key];
+      if (typeof storedY === "number") {
+        window.scrollTo(0, storedY);
+      }
+    } catch (error) {
+      console.error(error);
+      sessionStorage.removeItem(storageKey2);
+    }
+  })("react-router-scroll-positions", null)</script><script>window.__reactRouterContext = {"basename":"/testdeploy/","future":{"v8_middleware":false,"unstable_optimizeDeps":false,"unstable_splitRouteModules":false,"unstable_subResourceIntegrity":false,"unstable_viteEnvironmentApi":false},"routeDiscovery":{"mode":"lazy","manifestPath":"/__manifest"},"ssr":true,"isSpaMode":false};window.__reactRouterContext.stream = new ReadableStream({start(controller){window.__reactRouterContext.streamController = controller;}}).pipeThrough(new TextEncoderStream());</script><script type="module" async="">;
+import * as route0 from "/testdeploy/assets/root-CArOmm6T.js";
+import * as route1 from "/testdeploy/assets/layout-DekglgXJ.js";
+import * as route2 from "/testdeploy/assets/users-oCCgZ984.js";
+import * as route3 from "/testdeploy/assets/user-DugsJtRO.js";
+  window.__reactRouterManifest = {
+  "entry": {
+    "module": "/testdeploy/assets/entry.client-BzPPrKz8.js",
+    "imports": [
+      "/testdeploy/assets/chunk-OIYGIGL5-B0h15kU2.js"
+    ],
+    "css": []
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasErrorBoundary": false,
+      "module": "/testdeploy/assets/root-CArOmm6T.js",
+      "imports": [
+        "/testdeploy/assets/chunk-OIYGIGL5-B0h15kU2.js"
+      ],
+      "css": []
+    },
+    "layouts/layout": {
+      "id": "layouts/layout",
+      "parentId": "root",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasErrorBoundary": false,
+      "module": "/testdeploy/assets/layout-DekglgXJ.js",
+      "imports": [
+        "/testdeploy/assets/chunk-OIYGIGL5-B0h15kU2.js"
+      ],
+      "css": []
+    },
+    "pages/users": {
+      "id": "pages/users",
+      "parentId": "layouts/layout",
+      "path": "users",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasErrorBoundary": false,
+      "module": "/testdeploy/assets/users-oCCgZ984.js",
+      "imports": [
+        "/testdeploy/assets/chunk-OIYGIGL5-B0h15kU2.js"
+      ],
+      "css": []
+    },
+    "pages/user": {
+      "id": "pages/user",
+      "parentId": "pages/users",
+      "path": ":userId",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasErrorBoundary": false,
+      "module": "/testdeploy/assets/user-DugsJtRO.js",
+      "imports": [
+        "/testdeploy/assets/chunk-OIYGIGL5-B0h15kU2.js"
+      ],
+      "css": []
+    }
+  },
+  "url": "/testdeploy/assets/manifest-6fbfbc36.js",
+  "version": "6fbfbc36"
+};
+  window.__reactRouterRouteModules = {"root":route0,"layouts/layout":route1,"pages/users":route2,"pages/user":route3};
+
+import("/testdeploy/assets/entry.client-BzPPrKz8.js");</script><!--$?--><template id="B:0"></template><!--/$--><script id="_R_">requestAnimationFrame(function(){$RT=performance.now()});</script><div hidden id="S:0"><script>window.__reactRouterContext.streamController.enqueue("[{\"_1\":2,\"_18\":-5,\"_19\":-5},\"loaderData\",{\"_3\":4},\"pages/users\",{\"_5\":6},\"users\",[7,12,15],{\"_8\":9,\"_10\":11},\"id\",\"1\",\"fullName\",\"Robin Wieruch\",{\"_8\":13,\"_10\":14},\"2\",\"Sarah Finnley\",{\"_8\":16,\"_10\":17},\"3\",\"Ada Lovelace\",\"actionData\",\"errors\"]\n");</script><!--$?--><template id="B:1"></template><!--/$--></div><script>$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d||"/&"===d)if(0===h)break;else h--;else"$"!==d&&"$?"!==d&&"$~"!==d&&"$!"!==d&&"&"!==d||h++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;e.firstChild;)f.insertBefore(e.firstChild,c);g.data="$";g._reactRetry&&requestAnimationFrame(g._reactRetry)}}a.length=0};
+$RC=function(a,b){if(b=document.getElementById(b))(a=document.getElementById(a))?(a.previousSibling.data="$~",$RB.push(a,b),2===$RB.length&&("number"!==typeof $RT?requestAnimationFrame($RV.bind(null,$RB)):(a=performance.now(),setTimeout($RV.bind(null,$RB),2300>a&&2E3<a?2300-a:$RT+300-a)))):b.parentNode.removeChild(b)};$RC("B:0","S:0")</script><div hidden id="S:1"><script>window.__reactRouterContext.streamController.close();</script></div><script>$RC("B:1","S:1")</script></body></html>
