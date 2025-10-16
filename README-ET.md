@@ -210,9 +210,23 @@ export default {
 - `basename: process.env.GITHUB_PAGES ? "/testdeploy" : "/"` - Kasutab `/testdeploy` GitHub Pages jaoks, `/` lokaalses arenduses
 
 
+### vite.config.ts
+
+```typescript
+import { defineConfig } from "vite";
+import { reactRouter } from "@react-router/dev/vite";
+
+export default defineConfig({
+  plugins: [reactRouter()],
+  // Kasuta suhtelist base GitHub Pages jaoks assettide laadimise parandamiseks
+  base: process.env.GITHUB_PAGES ? "./" : "/",
+});
+```
+
 **Selgitused:**
-- React Router kasutab `basename` seadistust ka assettide teekide genereerimiseks
-- Kõik vajalikud teekonnad määratakse automaatselt `react-router.config.ts` failis
+- `base: "./"` GitHub Pages jaoks tagab, et assettide teekonnad on suhtelised (`./assets/...`)
+- Ilma selleta kasutab Vite absoluutseid teekondi (`/assets/...`), mis ei tööta GitHub Pages subdirectory-s
+- Lokaalses arenduses (`base: "/"`) kasutab absoluutseid teekondi
 
 ### package.json scripts
 
