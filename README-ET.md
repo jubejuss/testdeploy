@@ -218,15 +218,15 @@ import { reactRouter } from "@react-router/dev/vite";
 
 export default defineConfig({
   plugins: [reactRouter()],
-  // Kasuta suhtelist base GitHub Pages jaoks assettide laadimise parandamiseks
-  base: process.env.GITHUB_PAGES ? "./" : "/",
+  // Kasuta täielikku teed GitHub Pages jaoks assettide laadimise parandamiseks
+  base: process.env.GITHUB_PAGES ? "/testdeploy/" : "/",
 });
 ```
 
 **Selgitused:**
-- `base: "./"` GitHub Pages jaoks tagab, et assettide teekonnad on suhtelised (`./assets/...`)
+- `base: "/testdeploy/"` GitHub Pages jaoks tagab, et assettide teekonnad on õiged (`/testdeploy/assets/...`)
 - Ilma selleta kasutab Vite absoluutseid teekondi (`/assets/...`), mis ei tööta GitHub Pages subdirectory-s
-- Lokaalses arenduses (`base: "/"`) kasutab absoluutseid teekondi
+- Lokaalses arenduses (`base: "/"`) kasutab absoluutseid teekondi (`/assets/...`)
 
 ### package.json scripts
 

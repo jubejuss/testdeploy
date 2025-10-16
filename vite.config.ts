@@ -2,5 +2,7 @@ import { defineConfig } from "vite";
 import { reactRouter } from "@react-router/dev/vite";
 
 export default defineConfig({
-  plugins: [reactRouter()]
+  plugins: [reactRouter()],
+  // Use full path for GitHub Pages to fix asset loading
+  base: process.env.GITHUB_PAGES ? "/testdeploy/" : "/",
 });
