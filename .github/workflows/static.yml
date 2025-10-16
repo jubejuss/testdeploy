@@ -40,8 +40,10 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Copy index.html to root for GitHub Pages
-        run: cp build/client/testdeploy/index.html build/client/index.html
+      - name: Setup GitHub Pages routing
+        run: |
+          cp build/client/testdeploy/index.html build/client/index.html
+          cp build/client/index.html build/client/404.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
