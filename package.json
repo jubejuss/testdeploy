@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build",
-    "build:gh": "NODE_ENV=production GITHUB_PAGES=true react-router build && npm run gh:setup",
-    "gh:setup": "cp build/client/testdeploy/index.html build/client/index.html && cp build/client/__spa-fallback.html build/client/404.html && cp -r build/client/testdeploy/* build/client/ && rm -rf build/client/testdeploy",
+    "build:spa": "SSR=false react-router build",
+    "build:gh": "NODE_ENV=production SSR=false GITHUB_PAGES=true react-router build && npm run gh:setup",
+    "gh:setup": "echo 'Restructuring build files for GitHub Pages...' && cp build/client/testdeploy/index.html build/client/index.html && cp build/client/__spa-fallback.html build/client/404.html && cp -r build/client/testdeploy/* build/client/ && rm -rf build/client/testdeploy",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
