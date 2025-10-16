@@ -1,0 +1,1 @@
+import{w as r,v as n,p as s,x as a,O as i}from"./chunk-OIYGIGL5-B0h15kU2.js";const m=r(function(){const{users:t}=n();return s.jsxs(s.Fragment,{children:[s.jsx("h2",{children:"Users"}),s.jsx("ul",{style:{marginBottom:"1rem"},children:t.map(e=>s.jsx("li",{children:s.jsx(a,{to:e.id,children:e.fullName})},e.id))}),s.jsx(i,{})]})});export{m as default};
