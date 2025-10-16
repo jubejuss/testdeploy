@@ -18,7 +18,7 @@ export default function User() {
         <Link to="/users">Back to Users</Link>
       </div>
       <p>This nested route is mounted under /users and matches /users/{userId}.</p>
-      <p><strong>Framework mode:</strong> Enhanced with meta tags! ✨</p>
+      <p><strong>Framework mode:</strong> Enhanced with meta tags!</p>
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function NoMatch() {
       <h2>404 — Not Found</h2>
       <p>There's nothing here.</p>
       <Link to="/">Go to Home</Link>
-      <p><strong>Framework mode:</strong> Now with proper 404 meta tags! ✨</p>
+      <p><strong>Framework mode:</strong> Now with proper 404 meta tags!</p>
     </>
   );
 }

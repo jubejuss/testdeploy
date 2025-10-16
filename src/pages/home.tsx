@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <h2>Home</h2>
       <p>Welcome! Use the navigation above to explore the app.</p>
-      <p><strong>Now using Framework Mode!</strong> ✨</p>
+      <p><strong>Now using Framework Mode!</strong></p>
     </>
   );
 }
