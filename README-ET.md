@@ -114,69 +114,70 @@ docker run -p 3000:3000 my-app
 Loo fail `.github/workflows/static.yml` järgmise sisuga (muudatused võrreldes vaikimisi GitHub Pages workflow-ga):
 
 ```yaml
-# Lihtne workflow staatilise sisu deployimiseks GitHub Pages-i
-name: Deployi staatiline sisu Pages-i
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
-  # Käivitatakse main branchi push-idel
+  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
 
-  # Võimaldab käivitada workflow käsitsi Actions sakilt
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Seadistab GITHUB_TOKEN õigused GitHub Pages deployimiseks
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Lubab ainult ühe paralleelse deployimise korraga
-# Ei tühista pooleliolevaid deploye, et tootmisdeployid saaksid lõpuni toimida
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Üks deploy töö, kuna me lihtsalt deployime
+  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Kood alla
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: Seadista Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      - name: Installi sõltuvused
+      - name: Install dependencies
         run: npm ci
-      - name: Ehita GitHub Pages jaoks
+      - name: Build for GitHub Pages
         run: npm run build:gh
-      - name: Seadista Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Laadi üles artefakt
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Laadi üles build/client kaust
+          # Upload build/client directory
           path: './build/client'
-      - name: Deployi GitHub Pages-i
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 ```
 
 **Peamised muudatused võrreldes vaikimisi static.yml failiga:**
 
 🔄 **LISATUD:**
-- `Seadista Node.js` samm Node.js 20 ja npm cache-iga
-- `Installi sõltuvused` - `npm ci` käsk
-- `Ehita GitHub Pages jaoks` - kasutab `npm run build:gh` asemel tavalist build käsku
+- `Setup Node.js` samm Node.js 20 ja npm cache-iga
+- `Install dependencies` - `npm ci` käsk
+- `Build for Github Pages` - kasutab `npm run build:gh` asemel tavalist build käsku
 
 🔄 **MUUDETUD:**
-- `Laadi üles artefakt` samm kasutab `./build/client` teed asemel `.` (kogu repositooriumi)
+- `Upload artifact` samm kasutab `./build/client` teed.
 
 ❌ **EEMALDATUD vaikimisi workflow-st:**
 - Tavaline staatiline workflow ei sisalda Node.js ehitamise samme
@@ -208,22 +209,10 @@ export default {
 - `ssr: process.env.SSR !== "false"` - SSR on vaikimisi sees, välja lülitatud kui `SSR=false`
 - `basename: process.env.GITHUB_PAGES ? "/testdeploy" : "/"` - Kasutab `/testdeploy` GitHub Pages jaoks, `/` lokaalses arenduses
 
-### vite.config.ts
-
-```typescript
-import { defineConfig } from "vite";
-import { reactRouter } from "@react-router/dev/vite";
-
-export default defineConfig({
-  plugins: [reactRouter()],
-  // Kasuta base ainult GitHub Pages jaoks, mitte lokaalseks arenduseks
-  base: process.env.GITHUB_PAGES ? "/testdeploy/" : "/",
-});
-```
 
 **Selgitused:**
-- `base` määrab kõigi assettide (CSS, JS failid) prefiksi
-- GitHub Pages jaoks `/testdeploy/`, lokaalses arenduses `/`
+- React Router kasutab `basename` seadistust ka assettide teekide genereerimiseks
+- Kõik vajalikud teekonnad määratakse automaatselt `react-router.config.ts` failis
 
 ### package.json scripts
 
@@ -244,11 +233,10 @@ export default defineConfig({
 **Skriptide selgitused:**
 - `dev` - Arendusrežiim SSR-iga
 - `build` - Tavaline build (SSR sees, basename `/`)
-- `build:spa` - SPA režiimis build (SSR välja lülitatud)
+- `build:spa` - SPA režiimis build (SSR välja lülitatud, vajalik kohaliku staatilise lehe tegemiseks)
 - `build:gh` - GitHub Pages build (SPA + `/testdeploy` basename)
 - `gh:setup` - Ümberstruktureerib failid GitHub Pages jaoks
 - `start` - Käivitab SSR serveri
-- `typecheck` - Tüüpide kontroll
 
 ## Skriptide kasutamine
 
