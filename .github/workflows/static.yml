@@ -38,17 +38,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Setup GitHub Pages routing
-        run: |
-          # Copy main index.html to root
-          cp build/client/testdeploy/index.html build/client/index.html
-          cp build/client/index.html build/client/404.html
-          # Copy all prerendered data and HTML files to root level
-          cp -r build/client/testdeploy/* build/client/
-          # Remove the testdeploy subdirectory to avoid conflicts
-          rm -rf build/client/testdeploy
+      - name: Build for GitHub Pages
+        run: npm run build:gh
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
